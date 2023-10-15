@@ -6,11 +6,13 @@ import { NavigationContainer, } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-export default function App() {
+export default function Home({navigation,route}) {
+    var curentColor = route.params?.curentColor || "blue";
+    
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image source={require('../assets/vs_blue.png')} style={{ width: null, height: '100%', }} resizeMode='contain' />
+                <Image source={require('../assets/vs_'+curentColor+'.png')} style={{ width: null, height: '100%', }} resizeMode='contain' />
             </View>
             <View style={styles.body}>
                 <Text style={styles.text0}>Điện Thoại Vsmart Joy 3 - Hàng chính hãng</Text>
@@ -38,11 +40,8 @@ export default function App() {
                 </View>
                 <View style={styles.row}>
                     <Pressable style={styles.button1}
-                    // onPress={
-                    //     ()=>{
-                    //         //navigation.navigate('Creen02')
-                    //         Navigation.na
-                    //     }} 
+                    onPress={
+                        ()=>{navigation.navigate("ChooseColor")}} 
                     >
                         4 MÀU - CHỌN MÀU
                     </Pressable>
